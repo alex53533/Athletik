@@ -1,3 +1,6 @@
+<?php session_start() ;
+//if(empty($_SESSION['pseudo'])){ header('Location: formConnectG.php');}
+?>
 <!DOCTYPE html>
 <html>
     <?php
@@ -11,12 +14,21 @@
 </head>
     <?php include 'header.php'; ?>
     <body>
-        <div class="btns">
-            <div> <a href="addrunner.php" role="button" class="btn btn-primary">Création d'un participant</a></div>
+        <?php
+        include 'PDObdd.php';
+         ?>                   
+        <div class="btns col-xs-offset-4 col-xs-4">
+            <?php
+             $reponse= $bdd->query('SELECT * FROM athlete');
+             ?>
+            <div> <a id="addRunnerNULL.php" href="formRunner.php" role="button" class="btn btn-primary">Création d'un participant</a></div>
+            <?php
+             $reponse= $bdd->query('SELECT * FROM meeting');
+             ?>
+            <div> <a id="formEvent" href="formEvent.php" role="button" class="btn btn-primary">Création d'un événement</a></div>
             
-            <div> <a href="OO.php" role="button" class="btn btn-primary">Enregistrer un résultat</a></div> 
+            <div> <a href="formResult.php" role="button" class="btn btn-primary">Enregistrer un résultat</a></div> 
         </div>
-        
-    </body>s
+    </body>
     <?php include 'footer.php'; ?>
 </html>

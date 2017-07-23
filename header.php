@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <header class="col-xs-12">
     <div id="divtitre_header" class="">
-        <h1 class="asso">athletik-les 1000 pas<?php if (isset($_SESSION['ID'])) {
-                                echo '('.$_SESSION['ID'].')';} ?>
+        <h1 class="asso">athletik-les 1000 pas
+        <?php if (isset($_SESSION['pseudo'])) {
+        echo '('.$_SESSION['pseudo'].')';} ?>
         </h1>
     </div>
     <div id="logo">

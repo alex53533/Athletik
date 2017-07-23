@@ -1,3 +1,6 @@
+<?php session_start() ;
+//if(empty($_SESSION['pseudo'])){ header('Location: formConnectG.php');}
+?>
 <!DOCTYPE html>
 <html>
     <?php
@@ -11,17 +14,17 @@
 </head>
     <?php include 'header.php'; ?>
     <body>
-     
-        <div class='btn2'> <a href="OO.php" role="button" class="btn btn-danger">Inscription</a>
-    
-      </div>
-      
+        <div class='btn2'> <a href="OO.php" role="button" class="btn btn-danger">Inscription</a></div>
+     <div class="btns col-xs-offset-4 col-xs-4">
         <div class="choiceB">
-            <div> <a href="gestionlogin.php" role="button" class="btn btn-primary">Connection Gestionnaire</a></div>
+             <?php
+             $reponse= $bdd->query('SELECT pseudo FROM user');
+             ?>
+            <div> <a href="formConnectG.php" role="button" class="btn btn-primary">Connection Gestionnaire</a></div>
             
             <div> <a href="OO.php" role="button" class="btn btn-primary">Connection Runner</a></div> 
         </div>
-        
+     </div>  
     </body>
     <?php include 'footer.php'; ?>
 </html>

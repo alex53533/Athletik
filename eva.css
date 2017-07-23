@@ -8,11 +8,13 @@ header{
     heigh: 60%;
     padding: 50px;
 }
+
 h1{
     text-align: center;
     margin-top: 5%;
     font-size: 50px;
 }
+
 #logo{
     position: absolute;
     top: 8px;
@@ -96,12 +98,11 @@ main{
 }
 
 body{
-color:black;
-background-color:white;
-background-image:url(img/trail.jpg);
+    color:black;
+    background-color:white;
+    background-image:url(img/trail.jpg);
 }
 
 choice{
-    
     text-align: center;
 }
