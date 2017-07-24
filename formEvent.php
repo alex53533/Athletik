@@ -23,15 +23,15 @@ $Addmeet=new Addmeet;
             
             <div class="form-group">
                 <label class="col-xs-5 bg-info">Lieux de l'événement:</label>
-                <input type="text" placeholder="Ville" name="lieux" required/>
+                <input type="text" placeholder="Ville" name="lieux7" required/>
             </div>
             <div class="form-group">
                 <label class="col-xs-5 bg-info">Description du meeting:</label>
-                <textarea type="text" name="description" id="description" WRAP = "virtual"></textarea>
+                <textarea type="text" name="description7" id="description" WRAP = "virtual"></textarea>
             </div>
             <div class="form-group">
                 <label class="col-xs-5 bg-info">Date de l'événement:</label>
-                <input name='date1' class="date" placeholder="Saisir une date" type="date" required>
+                <input name='date7' class="date" placeholder="aaaa-mm-dd" type="date" required>
             </div>
             <div class="btn-group col-xs-offset-5 col-xs-8 ">
                <button type="submit" name="valider" value="Ajouter" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-ok-circle"></span></button>

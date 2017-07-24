@@ -4,7 +4,7 @@ class IndexWeb {
     public function nextmeet(){
         
         include 'PDObdd.php';
-        $bdd = new PDO('mysql:host=localhost;dbname=at;charset=utf8', 'root', '');
+        $bdd = new PDO('mysql:host=localhost;dbname=athletik;charset=utf8', 'root', 'mvb94');
         $meet = $bdd->prepare('SELECT * FROM meeting WHERE YEAR(meeting.date) = 2017');
         $meet->execute(array());
         while($donnees = $meet->fetch()){
@@ -19,7 +19,7 @@ class IndexWeb {
     public function lastresult(){
         
         include 'PDObdd.php';
-        $bdd = new PDO('mysql:host=localhost;dbname=at;charset=utf8', 'root', '');
+        $bdd = new PDO('mysql:host=localhost;dbname=athletik;charset=utf8', 'root', 'mvb94');
         $clmnt = $bdd->prepare('SELECT athlete.*, result.time, result.points  FROM athlete inner join result on athlete.id = result.id WHERE result.meeting_id = 1');
         $clmnt->execute(array());
         while($donnees = $clmnt->fetch()){
@@ -56,7 +56,7 @@ class IndexWeb {
          /* $firsname = $_GET["firstname"];
         $lastname = $_GET["lastname"];
         $points = $_GET["points"];*/
-        $bdd = new PDO('mysql:host=localhost;dbname=at;charset=utf8', 'root', '');
+        $bdd = new PDO('mysql:host=localhost;dbname=athletik;charset=utf8', 'root', 'mvb94');
         $resugene = $bdd->prepare('SELECT SUM(result.points) as total, athlete.lastname, athlete.firstname FROM result inner join athlete on result.athlete_id = athlete.id inner join meeting on result.meeting_id = meeting.id WHERE YEAR(CURRENT_DATE()) = 2017 GROUP BY athlete.id ORDER BY total DESC');
         $resugene->execute(array());
         while($donnees = $resugene->fetch()){
@@ -73,7 +73,7 @@ class IndexWeb {
         
         include 'PDObdd.php';
         try{
-        $bdd = new PDO('mysql:host=localhost;dbname=at;charset=utf8', 'root', '');
+        $bdd = new PDO('mysql:host=localhost;dbname=athletik;charset=utf8', 'root', 'mvb94');
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $reponse = $bdd->prepare("SELECT * FROM meeting WHERE YEAR(meeting.date) = 2017");
         $reponse->execute();
@@ -155,13 +155,13 @@ class Addmeet {
     public function ajoutmeet(){
         
         include 'PDObdd.php';
-    $lieux=$_POST['lieux'];
-    $description=$_POST['description'];
-    $date=$_POST['date'];
+    $lieux=$_POST['lieux7'];
+    $description=$_POST['description7'];
+    $date=$_POST['date7'];
     $req= $bdd->prepare("INSERT INTO meeting VALUES (NULL,:name,:description,:date)");
-    $req->bindValue(':name', $lieux ,PDO::PARAM_STR) ;
-    $req->bindValue(':description', $description,PDO::PARAM_STR) ;
-    $req->bindValue(':date', $date ,PDO::PARAM_INT) ;
+    $req->bindValue(':name', $lieux ,PDO::PARAM_STR);
+    $req->bindValue(':description', $description,PDO::PARAM_STR);
+    $req->bindValue(':date', $date ,PDO::PARAM_INT);
     $insert=$req->execute();
       if ($insert){
          echo '<script> alert("L\'événement a bien été ajouté");</script>';
