@@ -21,13 +21,17 @@
             <?php
              $reponse= $bdd->query('SELECT * FROM athlete');
              ?>
-            <div> <a id="addRunnerNULL.php" href="formRunner.php" role="button" class="btn btn-primary">Création d'un participant</a></div>
+            <div> <a id="addRunnerNULL" href="formRunner.php" role="button" class="btn btn-primary">Création d'un participant</a></div>
             <?php
              $reponse= $bdd->query('SELECT * FROM meeting');
              ?>
             <div> <a id="formEvent" href="formEvent.php" role="button" class="btn btn-primary">Création d'un événement</a></div>
+            <?php
+             $reponse= $bdd->query('SELECT * FROM result, athlete, meeting');
+             ?>
+            <div> <a href="formCalcul.php" role="button" class="btn btn-primary">Calculer les points d'un coureur</a></div>
             
-            <div> <a href="formResult.php" role="button" class="btn btn-primary">Enregistrer un résultat</a></div> 
+            <div> <a href="formInsertResult.php" role="button" class="btn btn-primary">Enregistrer un résultat</a></div> 
         </div>
     </body>
     <?php include 'footer.php'; ?>

@@ -1,7 +1,8 @@
-<?php session_start() ;
+<?php
+session_start();
 //if(empty($_SESSION['pseudo'])){ header('Location: formConnectG.php');}
 include 'classModel.php';
-$Addmeet=new Addmeet;
+$Addmeet = new Addmeet;
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,9 +19,9 @@ $Addmeet=new Addmeet;
     include 'header.php';
     ?>
     <body>
-       <h3 class="col-xs-12 bg-info">Formulaire d'ajout d'événement</h3>
-             <form method="POST" action="formEvent.php" class="formulaire">
-            
+        <h3 class="col-xs-12 bg-info">Formulaire d'ajout d'événement</h3>
+        <form method="POST" action="./view/formEvent.php" class="formulaire">
+
             <div class="form-group">
                 <label class="col-xs-5 bg-info">Lieux de l'événement:</label>
                 <input type="text" placeholder="Ville" name="lieux7" required/>
@@ -34,14 +35,16 @@ $Addmeet=new Addmeet;
                 <input name='date7' class="date" placeholder="aaaa-mm-dd" type="date" required>
             </div>
             <div class="btn-group col-xs-offset-5 col-xs-8 ">
-               <button type="submit" name="valider" value="Ajouter" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-ok-circle"></span></button>
+                <button type="submit" name="valider" value="Ajouter" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-ok-circle"></span></button>
             </div>
             <div class="btn-group col-xs-offset-5 col-xs-8 ">
-               <button class="btn btn-warning btn-lg"><a href="testacc.php"><span class="glyphicon glyphicon-home"></span></a></button>
+                <button class="btn btn-warning btn-lg"><a href="testacc.php"><span class="glyphicon glyphicon-home"></span></a></button>
             </div>
         </form>
         <?php
-        $Addmeet->ajoutmeet();
+        if (isset($_POST['lieux7'])){
+            $Addmeet->ajoutmeet();
+        }
         ?>
     </body>
 </html>

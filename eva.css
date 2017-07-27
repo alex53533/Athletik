@@ -5,13 +5,13 @@ html{
 header{
     background-color: #B09F91;
     margin-top: 0px;
-    heigh: 60%;
-    padding: 50px;
+    height: 15%;
+    padding: 10px;
 }
 
 h1{
-    text-align: center;
-    margin-top: 5%;
+    text-align: left;
+    margin-top: 2%;
     font-size: 50px;
 }
 
@@ -19,21 +19,24 @@ h1{
     position: absolute;
     top: 8px;
     left: 16px;
-    width: 100%;
+    width: 50%;
+    max-width: 25px;
     height: auto;
     padding-top: 16px;
 }
 
+.btn{
+    display:inline-block;
+}
+
 .btn1{
-    position: absolute;
-    top: 11%;
-    left: 80%;
+    width: 45%;
+    margin: 10px 10% 10px 2%;
 }
 
 .btn2{
-    position: absolute;
-    top: 11%;
-    left: 90%;
+    width: 45%;
+    margin: 10px 50% 10px 2%;
 }
 
 #nxt{
@@ -41,6 +44,15 @@ h1{
     color: white;
     padding: 5px;
     max-width: 50%;
+    margin-left: 19px;
+    margin-bottom: 10px;
+}
+
+#lst{
+    background-color: #D9534F;
+    color: white;
+    padding: 5px;
+    max-width: 90%;
     margin-left: 19px;
     margin-bottom: 10px;
 }
@@ -58,7 +70,7 @@ h1{
     
 }
 
-#resul, #general{
+#resul, #pright{
     background-color: black;
     color: white;
     padding: 5px;
@@ -69,6 +81,16 @@ h1{
     padding-bottom: 30px;
     padding-top: 30px;
     border-radius: 10px; 
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+}
+
+#general{
+    background-color: black;
+    overflow: scroll;
+    margin-bottom: 30px;
+    color: white;
+    width: 100%;
 }
 
 #pleft1{
@@ -78,9 +100,17 @@ h1{
     margin-bottom: 30px;
 }
 
-#pleft2{                  //image cap
+#pleft2, #photo{                  //image cap
     max-width: 100%;
     text-align: center;
+    background-color: black;
+}
+
+#cap, #cc{
+    max-width: 95%;
+    width: 95%;
+    max-height: 60%;
+    height: 60%;
 }
 
 #general{

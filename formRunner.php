@@ -5,19 +5,22 @@ $Addrunn=new Addrunn;
 ?>
 <!DOCTYPE html>
 <html>
-    <?php
-    include_once 'PDObdd.php';
-    ?>
     <head>
         <title>eval</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="eva.css"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     </head>
-    <?php
-    include 'header.php';
-    ?>
     <body class="">
+         <header class="col-xs-12">
+        <div id="divtitre_header" class="">
+            <h1 class="asso">athletik-les 1000 pas
+            <?php if (isset($_SESSION['pseudo'])) { ?>
+            <a href="destroy.php" role="button" class="btn btn-danger">Déconnection</a>
+            <?php echo '('.$_SESSION['pseudo'].')';} ?>
+            </h1>
+        </div>
+        </header>
         <h3 class="col-xs-12 bg-info">Formulaire d'ajout d'un nouveau participant</h3>
         <form method="POST" action="formRunner.php" class="formulaire">
             <div class="form-group">
@@ -40,7 +43,9 @@ $Addrunn=new Addrunn;
             </div>
         </form>
     <?php
+    if(isset($_POST['firstname'])){
     $Addrunn->ajoutrunn();
+    }
     ?>
     </body>
 </html>

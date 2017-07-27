@@ -1,10 +1,19 @@
 <?php
 include 'PDObdd.php';
+
+class Calcul {
+    public function calcul(){
+        include 'PDObdd.php';
+        if(isset($_POST['points'])){
+                 $time=$_POST['time'];
+                 $age=$_POST['age'];
+                 $points=$_POST['points'];
+        }
+    }  
+}
 class IndexWeb {
     public function nextmeet(){
-        
         include 'PDObdd.php';
-        $bdd = new PDO('mysql:host=localhost;dbname=athletik;charset=utf8', 'root', 'mvb94');
         $meet = $bdd->prepare('SELECT * FROM meeting WHERE YEAR(meeting.date) = 2017');
         $meet->execute(array());
         while($donnees = $meet->fetch()){
@@ -17,9 +26,8 @@ class IndexWeb {
         
     }
     public function lastresult(){
-        
         include 'PDObdd.php';
-        $bdd = new PDO('mysql:host=localhost;dbname=athletik;charset=utf8', 'root', 'mvb94');
+        
         $clmnt = $bdd->prepare('SELECT athlete.*, result.time, result.points  FROM athlete inner join result on athlete.id = result.id WHERE result.meeting_id = 1');
         $clmnt->execute(array());
         while($donnees = $clmnt->fetch()){
@@ -51,12 +59,10 @@ class IndexWeb {
         */
     }
     public function classmnt(){
-        
         include 'PDObdd.php';
          /* $firsname = $_GET["firstname"];
         $lastname = $_GET["lastname"];
         $points = $_GET["points"];*/
-        $bdd = new PDO('mysql:host=localhost;dbname=athletik;charset=utf8', 'root', 'mvb94');
         $resugene = $bdd->prepare('SELECT SUM(result.points) as total, athlete.lastname, athlete.firstname FROM result inner join athlete on result.athlete_id = athlete.id inner join meeting on result.meeting_id = meeting.id WHERE YEAR(CURRENT_DATE()) = 2017 GROUP BY athlete.id ORDER BY total DESC');
         $resugene->execute(array());
         while($donnees = $resugene->fetch()){
@@ -70,13 +76,12 @@ class IndexWeb {
         }   
     }
     public function lastmeet(){
-        
         include 'PDObdd.php';
         try{
-        $bdd = new PDO('mysql:host=localhost;dbname=athletik;charset=utf8', 'root', 'mvb94');
+        include 'PDObdd.php';
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $reponse = $bdd->prepare("SELECT * FROM meeting WHERE YEAR(meeting.date) = 2017");
-        $reponse->execute();
+        $reponse->execute(array());
         $last = 0;
         while ($time = $reponse->fetch()){
                $dday = date("j");
@@ -93,7 +98,7 @@ class IndexWeb {
            for($i=0; $i < $last; $i++){
 
             echo '<ul>'; 
-                          echo $lastEvent[$i]." ";
+                          echo "<h2>"."<a href='indexLastEvent.php'>$lastEvent[$i]</a>"."</h2>";
                           echo $lastDate[$i]." ";
             echo '</ul>';
            }
@@ -104,16 +109,40 @@ class IndexWeb {
     }
 }
 
+class Insertresult {
+    public function insertresult(){
+         include 'PDObdd.php';
+     if(isset($_POST['athlete_id'])){
+     $athlete_id =$_POST['athlete_id'];
+     $meeting_id =$_POST['meeting_id'];
+     $time =$_POST['time'];
+     $points =$_POST['points'];
+     $req = $bdd->prepare("INSERT INTO result VALUES (NULL, :meeting_id, :athlete_id, :time, :points)");
+     $req->bindValue(':meeting_id', $meeting_id,PDO::PARAM_INT);
+     $req->bindValue(':athlete_id', $athlete_id,PDO::PARAM_INT);
+     $req->bindValue(':time', $time,PDO::PARAM_STR);
+     $req->bindValue(':points', $points,PDO::PARAM_INT);
+     $insert=$req->execute();
+     if($insert){
+     echo '<script> alert("Résultat ajouté");</script>';
+    }
+    }
+    }   
+}
+
 class Connect {
     public function connect(){
-        
         include 'PDObdd.php';
-    $pseudo = $_POST['pseudo'];        
+    //$pwdhach = hash("1234",$_POST["password"]);
+    if(isset($_POST['pseudo'])){
+    $pseudo = htmlspecialchars($_POST['pseudo']);  
+    $password = htmlspecialchars($_POST['password']);
          if(isset($_POST) && !empty($_POST['pseudo']) && !empty($_POST['password']))
          {
              try{
-                $stmt = $bdd->prepare("SELECT * FROM user WHERE pseudo ='$pseudo'");
+                $stmt = $bdd->prepare("SELECT * FROM user WHERE pseudo ='$pseudo' AND password ='$password'");
                 $stmt->bindValue(':loginid', $_POST['pseudo']);
+                $stmt->bindValue(':password', $_POST['password']);
                 $stmt->execute();
               }
              catch (Exception $e){
@@ -122,20 +151,21 @@ class Connect {
              $donnees = $stmt->fetch(PDO::FETCH_ASSOC);
              $pass = filter_var(FILTER_SANITIZE_STRING, $donnees['password']);
              if ($_POST['password']= $donnees['password']){
-                //$_SESSION['pseudo'] = $donnees['pseudo'];
-                //$_SESSION['password'] = $donnees['password'];
+                session_start();
+                $_SESSION['pseudo'] = $donnees['pseudo'];
+                $_SESSION['password'] = $donnees['password'];
+                echo '<script> alert("Vous êtes connecté");</script>';
                  header('Location: choiceManag.php');
              }
              else {
-                    echo '<p class="col-xs-12">Mauvais identifiant ou mot de passe</p>';
+                    echo '<script> alert("Mauvais identifiant ou mot de passe");</script>';
                   }
+            }      
          }
     }
 }
-
 class Addrunn {
     public function ajoutrunn(){
-        
         include 'PDObdd.php';
     $firstname=$_POST['firstname'];
     $lastname=$_POST['lastname'];
@@ -153,7 +183,6 @@ class Addrunn {
 
 class Addmeet {
     public function ajoutmeet(){
-        
         include 'PDObdd.php';
     $lieux=$_POST['lieux7'];
     $description=$_POST['description7'];
@@ -168,4 +197,3 @@ class Addmeet {
         }
     }
 }
-?>

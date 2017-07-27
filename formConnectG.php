@@ -29,7 +29,11 @@ $Connect=new Connect;
         </div>
         <?php
          include 'PDObdd.php';
+         if(isset($_POST['pseudo'])){
          $Connect->connect();
+         }
         ?>
     </body>
 </html>
+
+

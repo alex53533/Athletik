@@ -31,6 +31,9 @@
                    ?>
                 </h2>
             </div>
+            <div>
+                <a href="formCalcul.php" role="button" class="btn btn-primary">Calculez votre score</a>
+            </div>
             <div id="desc">
                    <p>Bienvenue à tous les sportifs et amateurs de course à pied sur le site de l'association 'athletik-les 1000 pas' ! 
                  Petite présentatation de l'association: Nous organisons tous les ans 5 courses de 1 kilometre afin de partager notre 
@@ -48,9 +51,22 @@
                    ?>
             </div>  
             <div id='pleft2'>
-                   <img src="img/cap.jpg">
+                   <img id="cc" src="img/strun.jpeg" alt="image course à pied">
+                    <div id='lst'>
+          <h2>Les derniers meetings :
+                   <?php
+                   include 'PDObdd.php';
+                   $IndexWeb=new IndexWeb;
+                   $IndexWeb-> lastmeet();
+                   ?>
+          </h2>
+        </div>
             </div>  
         </div>    
+        <div id="pright">
+        <div id='photo'>
+                 <img id="cap" src="img/cap.jpg" alt="image course à pied">
+        </div>      
         <div id="general">
                 <h4>Classement général 2017</h4>
                    <?php
@@ -59,14 +75,6 @@
                    $IndexWeb-> classmnt();
                    ?>
         </div>
-        <div id='nxt'>
-          <h2>Les derniers meetings :
-                   <?php
-                   include 'PDObdd.php';
-                   $IndexWeb=new IndexWeb;
-                   $IndexWeb-> lastmeet();
-                   ?>
-          </h2>
         </div>
         </main>
     </body>
