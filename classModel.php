@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Description of classModel
+ *
+ * @author alex
+ */
 include 'PDObdd.php';
 
 class Calcul {
@@ -37,17 +43,19 @@ class IndexWeb {
                           echo $donnees['lastname']." ";
                           echo $donnees['points'];
            echo '</ul>';
-        }  
-        /*
-        $bdd = new PDO('mysql:host=localhost;dbname=athletik;charset=utf8', 'root', 'mvb94');
+        }
+    }    
+    public function resultbymeet(){
+        include 'PDObdd.php';
+        
         $reponse = $bdd->prepare('SELECT athlete.*, result.time, result.points  FROM athlete inner join result on athlete.id = result.id WHERE result.meeting_id = :id OrDER BY result.points DESC');
-        $reponse->bindValue(':id',$_GET['idMeet'],PDO::PARAM_INT);
+        $reponse->bindValue(':id',$_GET['meeting_id'],PDO::PARAM_INT);
         
         $i = 1;
         echo "<div class='resu'>";
         $executeR=$reponse->execute();
         echo '<p>Classement par course </p>';
-        echo '<p>Résultat du meeting de ' .$_GET["name"]. '</p>';
+        echo '<p>Résultat du meeting de ' .$_GET[""]. '</p>';
         
         while ($donnees = $reponse->fetch()){
         
@@ -56,7 +64,7 @@ class IndexWeb {
                    echo $donnees['lastname'];
             echo '</ul>';
         }
-        */
+    
     }
     public function classmnt(){
         include 'PDObdd.php';
@@ -78,6 +86,7 @@ class IndexWeb {
     public function lastmeet(){
         include 'PDObdd.php';
         try{
+            
         include 'PDObdd.php';
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $reponse = $bdd->prepare("SELECT * FROM meeting WHERE YEAR(meeting.date) = 2017");
@@ -98,7 +107,42 @@ class IndexWeb {
            for($i=0; $i < $last; $i++){
 
             echo '<ul>'; 
-                          echo "<h2>"."<a href='indexLastEvent.php'>$lastEvent[$i]</a>"."</h2>";
+                          echo "<h2>"."<a href='templateResult.php'>$lastEvent[$i]</a>"."</h2>";
+                          echo $lastDate[$i]." ";
+            echo '</ul>';
+           }
+        }
+              catch (Exception $e){
+              echo 'Exception: ',  $e->getMessage(), "\n";
+              }
+    }
+
+
+ public function lastcourse(){
+        include 'PDObdd.php';
+        try{
+            
+        include 'PDObdd.php';
+        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $reponse = $bdd->prepare("SELECT * FROM meeting WHERE YEAR(meeting.date) = 2017");
+        $reponse->execute(array());
+        $last = 0;
+        while ($time = $reponse->fetch()){
+               $dday = date("j");
+               $month = date("n");
+               $year = date("Y");
+               $moment1 = $dday.'-'.$month.'-'.$year;
+               $moment2 = $time['date'];
+               if(strtotime($moment1) > strtotime($moment2)) {
+                   $lastEvent[$last] = $time['name'];
+                   $lastDate[$last] = $time['date'];
+                   $last +=1;
+                }
+        }
+           for($i=0; $i < $last; $i++){
+
+            echo '<ul>'; 
+                          echo "<h2>"."<a href='index.php'>$lastEvent[$i]</a>"."</h2>";
                           echo $lastDate[$i]." ";
             echo '</ul>';
            }
@@ -135,6 +179,7 @@ class Connect {
         include 'PDObdd.php';
     //$pwdhach = hash("1234",$_POST["password"]);
     if(isset($_POST['pseudo'])){
+        //voir filterinput
     $pseudo = htmlspecialchars($_POST['pseudo']);  
     $password = htmlspecialchars($_POST['password']);
          if(isset($_POST) && !empty($_POST['pseudo']) && !empty($_POST['password']))
@@ -195,5 +240,29 @@ class Addmeet {
       if ($insert){
          echo '<script> alert("L\'événement a bien été ajouté");</script>';
         }
+    }
+}  
+class Resultbydate {
+    public function bydate(){       
+            try {
+                include'PDObdd.php';
+                $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (Exception $e) {
+                die('Erreur : ' . $e->getMessage());
+            }
+            $reponse = $bdd->query('SELECT * FROM meeting');
+            echo'<h3>Résultats par meeting</h3>';
+            while ($donnees = $reponse->fetch()) {
+                   $today = new DateTime();
+                   $nn = new DateTime($donnees['date']);
+                   if ($today > $nn) {
+                       echo 'Résultats disponible';
+                   } else {
+                       echo 'Résultats à venir';
+                       }
+                echo'<h3><a href="index.php?event_id=' . $donnees["id"] . '&name=' . $donnees['name'] . '">' . $donnees['name'] . '</a></h3>';
+                echo '<h4 class= "date"> le' . ' ' . $donnees['date'] . '</h4>';
+                echo '<p class="des" > Information: ' . ' ' . $donnees['description'] . '</p>';
+            }
     }
 }

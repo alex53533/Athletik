@@ -38,10 +38,16 @@ $Addrunn=new Addrunn;
             <div class="btn-group col-xs-offset-5 col-xs-8 ">
                <button type="submit" name="valider" value="Ajouter" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-ok-circle"></span></button>
             </div>
+        </form> 
+        <nav>
             <div class="btn-group col-xs-offset-5 col-xs-8 ">
                <button class="btn btn-warning btn-lg"><a href="testacc.php"><span class="glyphicon glyphicon-home"></span></a></button>
             </div>
-        </form>
+            <div class="btn-group col-xs-offset-5 col-xs-8 ">
+               <button class="btn btn-warning btn-lg"><a href="choiceManag.php"><span class="glyphicon glyphicon glyphicon-fast-backward"></span></a></button>
+            </div>
+        </nav>    
+        
     <?php
     if(isset($_POST['firstname'])){
     $Addrunn->ajoutrunn();

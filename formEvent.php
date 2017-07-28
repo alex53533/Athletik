@@ -20,7 +20,7 @@ $Addmeet = new Addmeet;
     ?>
     <body>
         <h3 class="col-xs-12 bg-info">Formulaire d'ajout d'événement</h3>
-        <form method="POST" action="./view/formEvent.php" class="formulaire">
+        <form method="POST" action="formEvent.php" class="formulaire">
 
             <div class="form-group">
                 <label class="col-xs-5 bg-info">Lieux de l'événement:</label>
@@ -40,6 +40,12 @@ $Addmeet = new Addmeet;
             <div class="btn-group col-xs-offset-5 col-xs-8 ">
                 <button class="btn btn-warning btn-lg"><a href="testacc.php"><span class="glyphicon glyphicon-home"></span></a></button>
             </div>
+        <nav>    
+            <div class="btn-group col-xs-offset-5 col-xs-8 ">
+               <button class="btn btn-warning btn-lg"><a href="choiceManag.php"><span class="glyphicon glyphicon glyphicon-fast-backward"></span></a></button>
+            </div>
+        </nav>    
+           
         </form>
         <?php
         if (isset($_POST['lieux7'])){

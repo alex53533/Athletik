@@ -21,7 +21,7 @@ $Calcul=new calcul;
             </h1>
         </div>
         </header>
-       <h3 class="col-xs-12 bg-info">Formulaire d'enregistrement des résultats pour la mise à jour du classement</h3>
+       <h3 class="col-xs-12 bg-info">Formulaire pour le calcul des points</h3>
              <form method="POST" action="formCalcul.php" class="formulaire">
             <div class="form-group">
                 <label class="col-xs-5 bg-info">Temps de la performance:</label>
@@ -38,9 +38,14 @@ $Calcul=new calcul;
             <div class="btn-group col-xs-offset-5 col-xs-8 ">
                 <div id="valider" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-ok-circle"></span></div>
             </div>
+        <nav>         
             <div class="btn-group col-xs-offset-5 col-xs-8 ">
                <button class="btn btn-warning btn-lg"><a href="testacc.php"><span class="glyphicon glyphicon-home"></span></a></button>
+            </div>   
+            <div class="btn-group col-xs-offset-5 col-xs-8 ">
+               <button class="btn btn-warning btn-lg"><a href="choiceManag.php"><span class="glyphicon glyphicon glyphicon-fast-backward"></span></a></button>
             </div>
+        </nav>      
         </form>
        <script src="calcul.js">
        </script>

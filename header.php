@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="eva.css"/>
 </head>
 <header class="col-xs-12">
-    <div id="divtitre_header" class="">
-        <h1 class="asso">athletik-les 1000 pas
+    <div id="titre" class="">
+        <p><img id="logo" src="img/lolo.png" alt="logo association sportive" /> athletik-les 1000 pas</p>
+        <h1 class="asso">
         <?php if (isset($_SESSION['pseudo'])) { ?>
         <a href="destroy.php" role="button" class="btn btn-danger">Déconnection</a>
         <?php echo '('.$_SESSION['pseudo'].')';} ?>

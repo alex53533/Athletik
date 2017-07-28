@@ -43,9 +43,14 @@ $Insertresult=new InsertResult;
             <div class="btn-group col-xs-offset-5 col-xs-8 ">
                <button type="submit" name="addbdd" value="Ajouter" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-floppy-saved"></span></button>
             </div>
+        <nav>         
             <div class="btn-group col-xs-offset-5 col-xs-8 ">
                <button class="btn btn-warning btn-lg"><a href="testacc.php"><span class="glyphicon glyphicon-home"></span></a></button>
             </div>
+            <div class="btn-group col-xs-offset-5 col-xs-8 ">
+               <button class="btn btn-warning btn-lg"><a href="choiceManag.php"><span class="glyphicon glyphicon glyphicon-fast-backward"></span></a></button>
+            </div>
+        </nav>    
         </form>  
         <?php
         $Insertresult->insertresult();

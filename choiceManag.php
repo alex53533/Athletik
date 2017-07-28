@@ -32,6 +32,7 @@
             <div> <a href="formCalcul.php" role="button" class="btn btn-primary">Calculer les points d'un coureur</a></div>
             
             <div> <a href="formInsertResult.php" role="button" class="btn btn-primary">Enregistrer un résultat</a></div> 
+            <div> <a href="formConnectG.php" role="button" class="btn btn-warning glyphicon glyphicon-fast-backward"  ></a></div>
         </div>
     </body>
     <?php include 'footer.php'; ?>

@@ -15,69 +15,119 @@ h1{
     font-size: 50px;
 }
 
+.ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.btn1, .btn2, .btn3 {
+    float: left;
+}
+
+.li, .btn1, .btn2, .btn3 {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#titre{
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+}
+
 #logo{
-    position: absolute;
-    top: 8px;
-    left: 16px;
-    width: 50%;
-    max-width: 25px;
-    height: auto;
-    padding-top: 16px;
+    
 }
 
-.btn{
-    display:inline-block;
+#btn{
+    display: flex;
+    flex-direction: column;
+    float: right;
 }
 
-.btn1{
-    width: 45%;
+#btn1{
+    width: 25%;
     margin: 10px 10% 10px 2%;
 }
 
-.btn2{
-    width: 45%;
+#btn2{
+    width: 25%;
     margin: 10px 50% 10px 2%;
 }
+
+#btn3{
+    width: 25%;
+    margin: 10px 10% 10px 2%;
+}    
 
 #nxt{
     background-color: #D9534F;
     color: white;
     padding: 5px;
-    max-width: 50%;
+    max-width: 75%;
     margin-left: 19px;
     margin-bottom: 10px;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
 }
 
 #lst{
     background-color: #D9534F;
     color: white;
     padding: 5px;
-    max-width: 90%;
     margin-left: 19px;
     margin-bottom: 10px;
+    max-width: 50%;
+    width: 50%;
+    max-height: inherit;
+    overflow: scroll;
+    font-size: 1vw;
 }
 
 #desc{
     background-color: black;
     color: white;
     padding: 5px;
-    max-width: 95%;
+    max-width: 90%;
+    width: 90%;
+    margin-left: 19px;
+    margin-right: 19%;
+    margin-bottom: 10px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+#byevent{
+ background-color: black;
+    color: white;
+    padding: 5px;
+    max-width: 198%;
+    width: 198%;
     margin-left: 19px;
     margin-bottom: 10px;
     padding-bottom: 30px;
     padding-top: 30px;
     border-radius: 10px;
-    
+    justify-content: center;
 }
 
-#resul, #pright{
+#resul, #pright, #lastRunning{
     background-color: black;
     color: white;
     padding: 5px;
-    max-width: 45%;
-    width: 45%;
+    max-width: 48%;
+    width: 48%;
     margin-left: 19px;
     margin-bottom: 10px;
+    margin-right: 4px;
     padding-bottom: 30px;
     padding-top: 30px;
     border-radius: 10px; 
@@ -88,9 +138,10 @@ h1{
 #general{
     background-color: black;
     overflow: scroll;
-    margin-bottom: 30px;
+    margin-top: 40px;
     color: white;
     width: 100%;
+    height: 650px;
 }
 
 #pleft1{
@@ -114,7 +165,7 @@ h1{
 }
 
 #general{
-    height: 600px;
+    height: 300px;
     margin-right: 15px;
     background-color: black;
     overflow: scroll;
@@ -135,4 +186,12 @@ body{
 
 choice{
     text-align: center;
+}
+
+@media screen and (max-width : 320px) {
+    #lastRunning, #resul, #pright, #byevent{
+        max-width: 100%;
+        width: 100%;
+        margin: auto;
+    }
 }
