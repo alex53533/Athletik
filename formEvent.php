@@ -38,7 +38,7 @@ $Addmeet = new Addmeet;
                 <button type="submit" name="valider" value="Ajouter" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-ok-circle"></span></button>
             </div>
             <div class="btn-group col-xs-offset-5 col-xs-8 ">
-                <button class="btn btn-warning btn-lg"><a href="testacc.php"><span class="glyphicon glyphicon-home"></span></a></button>
+                <button class="btn btn-warning btn-lg"><a href="index.php"><span class="glyphicon glyphicon-home"></span></a></button>
             </div>
         <nav>    
             <div class="btn-group col-xs-offset-5 col-xs-8 ">

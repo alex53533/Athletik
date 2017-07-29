@@ -41,7 +41,7 @@ $Addrunn=new Addrunn;
         </form> 
         <nav>
             <div class="btn-group col-xs-offset-5 col-xs-8 ">
-               <button class="btn btn-warning btn-lg"><a href="testacc.php"><span class="glyphicon glyphicon-home"></span></a></button>
+               <button class="btn btn-warning btn-lg"><a href="index.php"><span class="glyphicon glyphicon-home"></span></a></button>
             </div>
             <div class="btn-group col-xs-offset-5 col-xs-8 ">
                <button class="btn btn-warning btn-lg"><a href="choiceManag.php"><span class="glyphicon glyphicon glyphicon-fast-backward"></span></a></button>

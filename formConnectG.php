@@ -25,7 +25,7 @@ $Connect=new Connect;
                     <input type="password" class="form-control" name="password" placeholder="mot de passe gestionnaire"> 
                 </div>
                 <button type="submit" class="btn btn-success btn-lg btn-block"><span class="glyphicon glyphicon-check"></span></button>
-                <div> <a href="choice.php" role="button" class="btn btn-warning glyphicon glyphicon-fast-backward"  ></a></div>
+                <div> <a href="choice.php" role="button" class="btn btn-warning glyphicon glyphicon-fast-backward"></a></div>
             </form>   
               
         </div>

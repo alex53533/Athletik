@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description of classModel
  *
@@ -18,6 +17,7 @@ class Calcul {
     }  
 }
 class IndexWeb {
+
     public function nextmeet(){
         include 'PDObdd.php';
         $meet = $bdd->prepare('SELECT * FROM meeting WHERE YEAR(meeting.date) = 2017');
@@ -86,8 +86,7 @@ class IndexWeb {
     public function lastmeet(){
         include 'PDObdd.php';
         try{
-            
-        include 'PDObdd.php';
+
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $reponse = $bdd->prepare("SELECT * FROM meeting WHERE YEAR(meeting.date) = 2017");
         $reponse->execute(array());
@@ -195,7 +194,7 @@ class Connect {
              }
              $donnees = $stmt->fetch(PDO::FETCH_ASSOC);
              $pass = filter_var(FILTER_SANITIZE_STRING, $donnees['password']);
-             if ($_POST['password']= $donnees['password']){
+             if ($_POST['password']== $donnees['password']){
                 session_start();
                 $_SESSION['pseudo'] = $donnees['pseudo'];
                 $_SESSION['password'] = $donnees['password'];
@@ -260,7 +259,7 @@ class Resultbydate {
                    } else {
                        echo 'Résultats à venir';
                        }
-                echo'<h3><a href="index.php?event_id=' . $donnees["id"] . '&name=' . $donnees['name'] . '">' . $donnees['name'] . '</a></h3>';
+                echo'<h3><a href="resultView.php?event_id=' . $donnees["id"] . '&name=' . $donnees['name'] . '">' . $donnees['name'] . '</a></h3>';
                 echo '<h4 class= "date"> le' . ' ' . $donnees['date'] . '</h4>';
                 echo '<p class="des" > Information: ' . ' ' . $donnees['description'] . '</p>';
             }
