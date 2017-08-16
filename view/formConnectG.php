@@ -1,6 +1,6 @@
 <?php session_start();
 //$_SESSION['pseudo']=NULL;
-include 'classModel.php';
+include '../model/connectClass.php';
 $Connect=new Connect;
 ?>
 <!DOCTYPE html>
@@ -8,13 +8,14 @@ $Connect=new Connect;
     <head>
         <meta charset="UTF-8">
         <title>Login gestionnaire page</title>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
-        <link rel="stylesheet" href="eva.css"/>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" href="../eva.css"/>
     </head>
-    <?php include 'header.php'; ?>
+    <?php include '../view/header.php'; ?>
     <body>
+   <div class='fcG'>   
     <h3 class="col-xs-12 bg-info">Renseignez vos identifiants pour le compte Gestionnaire</h3>
-        <div class="">
+        <div class="formCG">
             <form class="col-xs-offset-4 col-xs-4" method="post" action="?page=formConnectG">
                 <div class="input-group ">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -29,13 +30,15 @@ $Connect=new Connect;
             </form>   
               
         </div>
+   </div>     
         <?php
-         include 'PDObdd.php';
+         include '../model/PDObdd.php';
          if(isset($_POST['pseudo'])){
          $Connect->connect();
          }
         ?>
     </body>
+    <?php include '../view/footer.php'; ?>
 </html>
 
 

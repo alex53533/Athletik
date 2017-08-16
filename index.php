@@ -1,11 +1,12 @@
 <?php session_start() ;
 //if(empty($_SESSION['pseudo'])){ header('Location: formConnectG.php');}
- include 'PDObdd.php';
- include 'classModel.php';
+ include 'model/PDObdd.php';
+ include 'model/indexClass.php';
+ include 'controller/controIndex.php';
+ include 'model/resultbyDClass.php';
 ?>
 <!DOCTYPE html>
 <html>
-    
 <head>
     <meta charset="utf-8">
     <title> P eval</title>
@@ -13,17 +14,24 @@
     <link rel="stylesheet" href="eva.css"/>
 </head>
     <?php
-  include 'header.php'; 
-  ?>
+  include 'view/header.php'; 
+    ?>
     <body>
-     <nav>   
-        <ul class="btn">
-           <li class='btn1'> <a href="choice.php" role="button" class="btn btn-success">Connexion</a>
+     <nav>
+        <ul class="btnav">
+           <?php if (empty($_SESSION['pseudo'])) { ?>
+          <li class='btn1'> <a href="view/choice.php" role="button" class="btn btn-success"><?php echo"Connexion";?></a>
            </li>
-           <li class='btn2'> <a href="OO.php" role="button" class="btn btn-danger">Inscription</a>
+          <li class='btn2'> <a href="OO.php" role="button" class="btn btn-info"><?php echo"Inscription";}?></a>
            </li>
-           <li class='btn3'> <a href="formCalcul.php" role="button" class="btn btn-primary">Calculez votre score</a>
+        </ul>
+        <ul class="btnMan">
+           <li class='menuMan'>
+           <?php
+           include 'view/buttonMenu.php';
+           ?>
            </li>
+           <li class='btn3'> <a href="view/formCalcul.php" role="button" class="btn btn-primary">Calculez votre score</a></li>
         </ul>
      </nav>  
      <section>   
@@ -31,9 +39,8 @@
             <div id='nxt'> 
                 <h2>Meetings à venir :
                    <?php
-                 
-                   $IndexWeb=new IndexWeb;
-                   $IndexWeb-> nextmeet();
+                   $NextBMeet=new NextBMeet;
+                   $NextBMeet-> nextmeeting();
                    ?>
                 </h2>
             </div>
@@ -51,9 +58,8 @@
             <div id='pleft1'>
                 <h4>Résultat de la dernière course</h4>
                    <?php
-                   
-                   $IndexWeb=new IndexWeb;
-                   $IndexWeb-> lastresult();
+                   $NextBMeet=new NextBMeet;
+                   $NextBMeet-> lastclassmnt();
                    ?>
             </div>  
             <div id='pleft2'>
@@ -68,7 +74,7 @@
         <div id="general">
                 <h4>Classement général 2017</h4>
                    <?php
-                   $IndexWeb-> classmnt();
+                   $NextBMeet-> generalclassmnt();
                    ?>
         </div>
         </div>
@@ -77,13 +83,13 @@
                    <?php
                    //$IndexWeb=new IndexWeb;
                    //$IndexWeb-> lastmeet();
-                   $Resultbydate=new Resultbydate;
-                   $Resultbydate-> bydate();
+                   $NextBMeet=new NextBMeet;
+                   $NextBMeet-> resultbymeeting();
                    ?>
         </div>
     </section>        
     </main>
-        <?php include 'footer.php'; ?>
+        <?php include 'view/footer.php'; ?>
     </body>
     
 </html>

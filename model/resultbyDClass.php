@@ -1,32 +1,33 @@
-<?php session_start() ;
-//if(empty($_SESSION['pseudo'])){ header('Location: formConnectG.php');}
-?>
-<!DOCTYPE html>
-<html>
-    <?php
-  include 'PDObdd.php';
-  include 'classModel.php';
-    ?>
-<head>
-    <meta charset="utf-8">
-    <title>Index eval</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="eva.css"/>
-</head>
-    <?php include 'header.php'; ?>
-    <body>
-     <section>   
-      <div class="btn">
-        <div class='btn1'> <a href="choice.php" role="button" class="btn btn-success">Connexion</a>
-        </div>
-        <div class='btn2'> <a href="OO.php" role="button" class="btn btn-danger">Inscription</a>
-        </div>
-      </div>
-     </section>  
-    <main>     
-      <div id="lastRunning">
-        <?php    
-             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+<?php
+/**
+ * Description of resultbyDClass
+ *
+ * @author alex
+ */
+class Resultbydate{
+    public function bydate(){       
+                include'model/PDObdd.php';
+            $reponse = $bdd->query('SELECT * FROM meeting');
+            echo'<h3>Résultats par meeting</h3>';
+            while ($donnees = $reponse->fetch()) {
+                   $today = new DateTime();
+                   $nn = new DateTime($donnees['date']);
+                   if ($today > $nn) {
+                       echo'<div class="bdate">';
+                       echo 'Résultats disponible';
+                   } else {
+                       echo'<div class="bdate">';
+                       echo 'Résultats à venir';
+                       }
+                        
+                echo '<h3><a class="b" href="view/resultView.php?event_id=' . $donnees["id"] . '&name=' . $donnees['name'] . '">' . $donnees['name'] . '</a></h3>';
+                echo '<h3 class= "date"> le' . ' ' . $donnees['date'] . '</h3>';
+                echo '<p class="des" > Information: ' . ' ' . $donnees['description'] . '</p>';
+                    echo'</div>';
+            }   
+    }
+    public function byview(){
+         include'../model/PDObdd.php';
              $reponse = $bdd->prepare('SELECT athlete.*,result.time, result.points FROM athlete inner join result on athlete.id = result.id WHERE result.meeting_id = :id OrDER BY result.points DESC');
              $reponse->bindValue(':id', $_GET['event_id'], PDO::PARAM_INT);
              $i = 1;
@@ -48,9 +49,5 @@
                       echo'</tr>';
                       }
                     echo'</table>';
-        ?>
-        </div>
-      </main>
-    </body>
-    <?php include 'footer.php'; ?>
-</html>
+    }
+}

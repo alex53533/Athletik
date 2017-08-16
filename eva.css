@@ -15,6 +15,40 @@ h1{
     font-size: 50px;
 }
 
+a:link{
+    text-decoration: none;
+    color: white;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+a:hover{
+    color: white;
+}
+
+.b:link{
+    text-decoration: none;
+    color: #F95B5E;
+}
+
+.b{
+    text-decoration: none;
+    color: #F95B5E;
+    display: block;
+}
+
+.b:hover{
+    color: gray;
+}
+
+.bdate{
+    border: 1px solid white;
+}
+
 .ul {
     list-style-type: none;
     margin: 0;
@@ -23,22 +57,53 @@ h1{
     background-color: #333;
 }
 
-.btn1, .btn2, .btn3 {
-    float: left;
+.btnav{
+    display: block;
+    height: 180px;
+    max-height: 180px;
+    text-align: right;
+    position: relative;
+    left: 40%;
+    padding-top: 20px;
 }
 
-.li, .btn1, .btn2, .btn3 {
+li{
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 7px 16px;
     text-decoration: none;
 }
 
 #titre{
     font-size: 3em;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
+}
+
+.asso{
+    font-size: 20px;
+    position: relative;
+    left: 78%;
+    margin-top: -15px;
+}
+
+.tete{
+    position: absolute;
+    width: 100%;
+    max-width: 100%;
+    height: 160px;
+    max-height: 160px;
+}
+
+.btn3{
+    margin-top: 10%;
+    display: inline;
+}
+
+.menuMan{
+    display: inline;
+    
 }
 
 #logo{
@@ -49,6 +114,13 @@ h1{
     display: flex;
     flex-direction: column;
     float: right;
+}
+
+.btnMan{
+    display: inline;
+    text-align: right;
+    position: relative;
+    left: 2%;
 }
 
 #btn1{
@@ -73,6 +145,7 @@ h1{
     max-width: 75%;
     margin-left: 19px;
     margin-bottom: 10px;
+    margin-top: 50px;
     opacity: 0.9;
     filter: alpha(opacity=90);
 }
@@ -188,10 +261,89 @@ choice{
     text-align: center;
 }
 
+h3{
+    color: #046380;
+}
+
+h4{
+    color: #F95B5E;
+}
+
+.choiceB, #choiceM{
+    margin-top: 230px;
+}
+
+.formt, .fcG, .formr, .formc, .formires{
+    padding-top: 190px;
+}
+
+.menuAct{
+    padding-left: 50px;
+}
+
+#div_footer{
+    text-align: center;
+    background-color: #F95B5E;
+    position: relative;
+    padding: 5px;
+    margin-top: 140px;
+}
+#lastRunning{
+    margin-top: 200px;
+}
+
 @media screen and (max-width : 320px) {
     #lastRunning, #resul, #pright, #byevent{
         max-width: 100%;
         width: 100%;
         margin: auto;
+    }
+    .btnav{
+       position: relative;
+       left: -15%;
+       padding-top: 100px;
+    }
+    .asso{
+       position: relative;
+       left: 3%;
+       padding-top: 40px;  
+    }
+    .form-group, #choiceM{
+        display: block;
+        padding-top: 20px;
+        left: -15%;
+    }
+    .btnMan{
+        display: block;
+        margin-top: -45px;
+        left: -15%;
+    }
+    .btn1, .btn2{
+        display: inline;
+    }
+    .menuAct{
+        margin-top: -170px;
+        margin-bottom: 70px;
+        position: relative;
+        left: 70%;
+    }
+    
+    .formCG, .choiceB{
+        max-width: 900px;
+        width: 900px;
+        position: relative;
+        left: -96%;
+    }
+    .tete{
+        max-height: 20%;
+        height: 20%;
+        font-size: 6px;
+    }
+    .imglogo{
+        width: 70px;
+        height: 70px;
+    }
+    #lastRunning{
+        margin-top: 140px;
     }
 }
